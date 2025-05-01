@@ -1,5 +1,6 @@
 import unittest
 
+
 class Product:
     total_products = 0
 
