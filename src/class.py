@@ -17,17 +17,17 @@ class Product:
 class Category:
     total_categories = 0
     total_products = 0
-
     name: str
     description: str
     products: str
 
-    def __init__(self, name, description):
+    def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
-        self.products = []
+        self.__products = []  # Приватный атрибут для хранения списка товаров
 
         Category.total_categories += 1
+        Category.total_products += len(self.__products)
 
 
 def add_product(self, product):
@@ -56,4 +56,3 @@ if __name__ == "__main__":
     print(product1)
     print(product2)
     print(electronics_category)
-
