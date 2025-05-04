@@ -17,7 +17,11 @@ class Product:
             total_price = (self.price * self.quantity) + (other.price * other.quantity)
             total_quantity = self.quantity + other.quantity
             # Создаем новый объект Product с суммарной стоимостью и количеством
-            return Product("Суммарный товар", total_price / total_quantity if total_quantity > 0 else 0, total_quantity)
+            return Product(
+                "Суммарный товар",
+                total_price / total_quantity if total_quantity > 0 else 0,
+                total_quantity,
+            )
         return NotImplemented
 
     @price.setter
@@ -26,6 +30,7 @@ class Product:
         if value < 0:
             raise ValueError("Цена не может быть отрицательной.")
         self.__price = value
+
     def __repr__(self):
         return (
             f"Product(name={self.name}, price={self.price}, quantity={self.quantity})"
@@ -96,5 +101,3 @@ electronics_category.add_product(new_product)
 # Вывод информации о категории с товарами
 print(electronics_category)  # Вывод информации о категории
 print(electronics_category.list_products())
-
-
