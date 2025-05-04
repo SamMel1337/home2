@@ -9,6 +9,17 @@ class Product:
         """Геттер для получения цены продукта."""
         return self.__price
 
+    def __str__(self):
+        return f"{self.name}, {self.price} руб остаток: {self.quantity}"
+
+    def __add__(self, other):
+        if isinstance(other, Product):
+            total_price = (self.price * self.quantity) + (other.price * other.quantity)
+            total_quantity = self.quantity + other.quantity
+            # Создаем новый объект Product с суммарной стоимостью и количеством
+            return Product("Суммарный товар", total_price / total_quantity if total_quantity > 0 else 0, total_quantity)
+        return NotImplemented
+
     @price.setter
     def price(self, value: float):
         """Сеттер для установки цены продукта."""
@@ -46,6 +57,9 @@ class Category:
 
         Category.total_categories += 1
 
+    def __str__(self):
+        return f"{self.name}, количество продуктов: {self.description}"
+
     def add_product(self, product: Product):
         if isinstance(product, Product):
             self.__products.append(product)  # Добавляем продукт в список
@@ -82,3 +96,5 @@ electronics_category.add_product(new_product)
 # Вывод информации о категории с товарами
 print(electronics_category)  # Вывод информации о категории
 print(electronics_category.list_products())
+
+
