@@ -1,5 +1,7 @@
 import unittest
-#from src.class2 import Product, Category
+
+
+# from src.class2 import Product, Category
 class Product:
     total_products = 0
 
@@ -20,6 +22,7 @@ class Category:
         self.products = []
         Category.total_categories += 1
 
+
 class TestProductAndCategory(unittest.TestCase):
 
     def setUp(self):
@@ -30,8 +33,8 @@ class TestProductAndCategory(unittest.TestCase):
 
     def test_product_creation(self):
         """Тест на создание продукта."""
-        self.assertEqual(self.product1.name, 'Смартфон')
-        self.assertEqual(self.product1.description, 'Современный смартфон')
+        self.assertEqual(self.product1.name, "Смартфон")
+        self.assertEqual(self.product1.description, "Современный смартфон")
         self.assertAlmostEqual(self.product1.price, 500.00)
         self.assertEqual(self.product1.quantity, 5)
 
@@ -41,8 +44,8 @@ class TestProductAndCategory(unittest.TestCase):
 
     def test_category_creation(self):
         """Тест на создание категории."""
-        self.assertEqual(self.category.name, 'Электроника')
-        self.assertEqual(self.category.description, 'Устройства и гаджеты')
+        self.assertEqual(self.category.name, "Электроника")
+        self.assertEqual(self.category.description, "Устройства и гаджеты")
 
     def test_category_total_count(self):
         """Тест на общее количество категорий."""

@@ -1,6 +1,9 @@
 import unittest
 from src.class2 import Product  # Убедитесь, что этот импорт корректен
-from src.newhomework  import Smartphone, LawnGrass  # Замените your_module на имя вашего файла
+from src.newhomework import (
+    Smartphone,
+    LawnGrass,
+)  # Замените your_module на имя вашего файла
 
 
 class TestProduct(unittest.TestCase):
@@ -41,19 +44,15 @@ class TestProduct(unittest.TestCase):
 
     def test_new_product_creation(self):
         """Тестируем создание нового продукта через класс-метод"""
-        product_data = {
-            'name': 'Планшет',
-            'price': 300.00,
-            'quantity': 3
-        }
+        product_data = {"name": "Планшет", "price": 300.00, "quantity": 3}
 
         product = Product.new_product(product_data)
 
         self.assertIsInstance(product, Product)
-        self.assertEqual(product.name, 'Планшет')
+        self.assertEqual(product.name, "Планшет")
         self.assertEqual(product.price, 300.00)
         self.assertEqual(product.quantity, 3)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

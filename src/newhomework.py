@@ -41,24 +41,13 @@ class LawnGrass(Product):
     germination_period: int
     color: str
 
-product_data = {
-    'name': 'Смартфон',
-    'price': 500.00,
-    'quantity': 5
-}
-product_data1 = {
-    'name': 'Смартфон',
-    'price': 500.00,
-    'quantity': 5
-}
+
+product_data = {"name": "Смартфон", "price": 500.00, "quantity": 5}
+product_data1 = {"name": "Смартфон", "price": 500.00, "quantity": 5}
 
 product1 = Product.new_product(product_data1)
 
-product_data2 = {
-    'name': 'Планшет',
-    'price': 300.00,
-    'quantity': 3
-}
+product_data2 = {"name": "Планшет", "price": 300.00, "quantity": 3}
 product2 = Product.new_product(product_data2)
 """Создаем новый продукт с помощью класса-метода"""
 new_product = Product.new_product(product_data)
