@@ -58,34 +58,46 @@ class Category:
     def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
-        self.__products = []  # Приватный атрибут для хранения списка товаров
-
+        self.products = []  # Приватный атрибут для хранения списка товаров
         Category.total_categories += 1
+    def average_price(self):
+        if not self.products:
+            return 0  # Если товаров нет, возвращаем 0
+
+        total_price = sum(product.price for product in self.products)
+        total_quantity = sum(product.quantity for product in self.products)
+
+        try:
+            average = total_price / total_quantity
+        except ZeroDivisionError:
+            return 0  # Если сумма товаров равна 0, возвращаем 0
+
+        return average
 
     def __str__(self):
         return f"{self.name}, количество продуктов: {self.description}"
 
     def add_product(self, product: Product):
         if isinstance(product, Product):
-            self.__products.append(product)  # Добавляем продукт в список
+            self.products.append(product)  # Добавляем продукт в список
             Category.total_products += 1  # Увеличиваем общее количество товаров
         else:
             raise ValueError("Только объекты класса Product могут быть добавлены.")
 
     def get_products(self):
-        return self.__products[:]  # Возвращаем копию списка товаров для чтения
+        return self.products[:]  # Возвращаем копию списка товаров для чтения
 
     def list_products(self):
         """Возвращает список товаров в формате: Название продукта, цена руб. Остаток: количество шт."""
         return [
             f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт."
-            for product in self.__products
+            for product in self.products
         ]
 
     def __repr__(self):
         return (
             f"Category(name={self.name}, description={self.description}, "
-            f"total products={len(self.__products)})"
+            f"total products={len(self.products)})"
         )
 
 
