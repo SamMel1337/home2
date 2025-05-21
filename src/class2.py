@@ -1,5 +1,7 @@
 class Product:
     def __init__(self, name: str, price: float, quantity: int):
+        if quantity == 0:
+            raise ValueError("Количество товара не может быть нулевым.")
         self.name = name
         self.__price = price
         self.quantity = quantity
@@ -48,6 +50,9 @@ class Product:
                 "Все параметры (name, price, quantity) должны быть указаны."
             )
 
+        if quantity == 0:
+            raise ValueError("Количество товара не может быть нулевым.")
+
         return cls(name, price, quantity)
 
 
@@ -60,6 +65,7 @@ class Category:
         self.description = description
         self.products = []  # Приватный атрибут для хранения списка товаров
         Category.total_categories += 1
+
     def average_price(self):
         if not self.products:
             return 0  # Если товаров нет, возвращаем 0

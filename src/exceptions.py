@@ -6,8 +6,8 @@ class Exception_Value(Exception):
         self.quantity = quantity
         self.price = price
 
+
 try:
     product = Exception_Value("dd", 0, 0)
 except ValueError as e:
     print(e)
-
